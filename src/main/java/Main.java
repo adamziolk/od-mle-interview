@@ -1,3 +1,4 @@
+import B.DCFactory;
 import C.Simulator;
 import extras.Location;
 import extras.Person;
@@ -7,6 +8,10 @@ public class Main {
     public static void problemA() {
         // TODO explain why this class is not working as expected
         // Fix this class so the correct names get printed out
+
+        // Explanation: The "static" keyword from the Person class was causing the "name" attribute of the class
+        // to serve as a class variable - there could only be one value for all instances of the Person class.
+        // I don't know why this is funny - I listen to bad music (i.e. the Tenet soundtrack on repeat for days).
         Person solange = new Person("Solange");
         Person beyonce = new Person("Beyonce");
         solange.sayMyName();
@@ -17,8 +22,10 @@ public class Main {
         Location atl = new Location("Alpharetta","GA",30005, -84.2941f, 34.0754f);
         Location nyc = new Location("NYC","NY",10111,-74.0060f,40.7128f);
         // These functions MUST be implemented in package B
-        double edist = 0.0; // TODO implement a function which uses Euclidean distance for finding the distance between atl and nyc
-        double hdist = 0.0;// TODO implement a function which uses Haversine formula for finding the distance between atl and nyc
+        DCFactory dcFactory = new DCFactory();
+
+        double edist = dcFactory.calculateDistance("Euclidean").distance(atl, nyc);
+        double hdist = dcFactory.calculateDistance("Haversine").distance(atl, nyc);
         // TODO write a unit test for each of these functions in the src.tests folder
     }
 

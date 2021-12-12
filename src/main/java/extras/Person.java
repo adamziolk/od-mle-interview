@@ -1,7 +1,7 @@
 package extras;
 
 public class Person {
-    public static String name;
+    public String name;
 
     public Person(String name) {
         this.name = name;
